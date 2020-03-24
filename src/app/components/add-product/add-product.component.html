@@ -7,7 +7,7 @@
     <div class="form-group">
       <label>Modèle de l'ordinateur :</label>
       <input  #productInput="ngModel" required type="text"
-              class="form-control" [(ngModel)]="productForm.modele" id="name" name="name">
+              class="form-control" [(ngModel)]="productForm.modele" id="modele" name="name">
       <div [hidden]="productInput.valid" class="alert alert-danger">#ERROR : MODELE_is_not_valid</div>
     </div>
 
@@ -28,8 +28,8 @@
     <!-- TYPE SELECT -->
     <div class="form-group">
       <label>Type de l'ordinateur : </label>
-      <select #type="ngModel" name="category"
-              [(ngModel)]="productForm.type"
+      <select #type="ngModel" name="type"
+              id="type" [(ngModel)]="productForm.type"
               required class="form-control">
         <option></option>
         <option *ngFor="let type of availableTypes">
@@ -68,7 +68,7 @@
       <div [hidden]="vente.valid" class="alert alert-danger">#ERROR : PRIX-VENTE_is_not_valid</div>
     </div>
 
-    <input type="submit" class="btn btn-lg btn-outline-danger" value="AJOUTER" [disabled]="!validationForm.valid"><br>
+    <input id="submitBtn" type="submit" class="btn btn-lg btn-outline-danger" value="AJOUTER" [disabled]="!validationForm.valid"><br>
     <button type="button" class="btn btn-lg btn-outline-danger" [routerLink]="['']">DASHBOARD</button>
 
   </form>

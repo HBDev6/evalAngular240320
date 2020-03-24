@@ -24,7 +24,7 @@
     </thead>
     <tbody  *ngFor="let product of products; let i = index">
       <tr [ngClass]="{'divA':i%2==0, 'divB':i%2!=0}">
-        <th scope="row">{{product.id}}</th>
+        <th class="computerRow" scope="row">{{product.id}}</th>
         <td>{{product.modele}}</td>
         <td>{{product.marque}}</td>
         <td>{{product.type}}</td>
@@ -51,6 +51,6 @@
   </table>
 </ng-container>
 
-<button type="button" class="btn btn-lg btn-outline-danger" [routerLink]="['/add']">AJOUTER UN ORDINATEUR</button>
+<button id="addComputerBtn" type="button" class="btn btn-lg btn-outline-danger" [routerLink]="['/dashboard/add']">AJOUTER UN ORDINATEUR</button>
 
 
