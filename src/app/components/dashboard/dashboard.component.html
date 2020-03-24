@@ -1,0 +1,56 @@
+<h1>VOS ORDINATEURS</h1>
+
+<ng-container *ngIf="isLoading">
+  Loading data..
+  <img src="/assets/pics/loading.gif">
+</ng-container>
+
+<ng-container *ngIf="!isLoading">
+  <h1>{{products.length}} Ordinateurs en STOCK</h1>
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Modele</th>
+        <th scope="col">Marque</th>
+        <th scope="col">Type</th>
+        <th scope="col">Utilisation</th>
+        <th scope="col">Prix d'Achat</th>
+        <th scope="col">Prix De Vente</th>
+        <th scope="col">Bénéfice</th>
+        <th scope="col">Entrée en Stock</th>
+        <th scope="col">Administration</th>
+      </tr>
+    </thead>
+    <tbody  *ngFor="let product of products; let i = index">
+      <tr [ngClass]="{'divA':i%2==0, 'divB':i%2!=0}">
+        <th scope="row">{{product.id}}</th>
+        <td>{{product.modele}}</td>
+        <td>{{product.marque}}</td>
+        <td>{{product.type}}</td>
+        <td>{{product.category}}</td>
+        <td>{{product.prixAchat}} €</td>
+        <td>{{product.prixVente}} €</td>
+        <td class="thune">{{product.prixVente - product.prixAchat|number}} €</td>
+        <td>{{product.dateEntreStock|date:"dd/MM/yy"}}</td>
+        <td>
+
+          <!-- EDITION BTN -->
+          <a class="cursor-pointer" [routerLink]="['/edit', product.id]"><img src="/assets/pics/gear.png" height="30px" class="icon"></a>
+          <span class="v-separator">|</span>
+
+          <!-- DELETE BTN -->
+          <a class="cursor-pointer"><img src="/assets/pics/stop.png" height="30px" class="icon" (click)="delete(product)"></a>
+          <span class="v-separator">|</span>
+
+          <!-- DETAIL BTN -->
+          <a class="cursor-pointer" [routerLink]="['/computer', product.id]"><img src="/assets/pics/loupe.png" height="30px" class="icon"></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>
+
+<button type="button" class="btn btn-lg btn-outline-danger" [routerLink]="['/add']">AJOUTER UN ORDINATEUR</button>
+
+

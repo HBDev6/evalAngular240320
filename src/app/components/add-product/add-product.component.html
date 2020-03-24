@@ -1,0 +1,84 @@
+<h1>Add Products</h1>
+<div class="container">
+
+  <form #validationForm="ngForm" (ngSubmit)="addProduct()">
+
+    <!-- MODELE CHAMPS TEXTE -->
+    <div class="form-group">
+      <label>Modèle de l'ordinateur :</label>
+      <input  #productInput="ngModel" required type="text"
+              class="form-control" [(ngModel)]="productForm.modele" id="name" name="name">
+      <div [hidden]="productInput.valid" class="alert alert-danger">#ERROR : MODELE_is_not_valid</div>
+    </div>
+
+    <!-- MARQUE RADIO -->
+    <div class="form-group">
+      <label>Marque de l'ordinateur :</label><br>
+      <ng-container *ngFor="let brand of availableBrands">
+        <div class="form-check form-check-inline">
+          <input  class="form-check-input" type="radio" name="brand"
+                  id="inputRadio1-{{brand}}" [value]="brand"
+                  [(ngModel)]="productForm.marque" required>
+          <label class="form-check-label" for="customRadio1">{{brand}}</label>
+        </div>
+      </ng-container>
+      <div [hidden]="validationForm.controls.brand?.valid" class="alert alert-danger">#ERROR : MARQUE_is_not_valid</div>
+    </div>
+
+    <!-- TYPE SELECT -->
+    <div class="form-group">
+      <label>Type de l'ordinateur : </label>
+      <select #type="ngModel" name="category"
+              [(ngModel)]="productForm.type"
+              required class="form-control">
+        <option></option>
+        <option *ngFor="let type of availableTypes">
+          {{type}}
+        </option>
+      </select>
+      <div [hidden]="type.valid" class="alert alert-danger">#ERROR : TYPE_is_not_valid</div>
+    </div>
+
+    <!-- CATEGORIE RADIO -->
+    <div class="form-group">
+      <label>Utilisation de l'ordinateur :</label><br>
+      <ng-container *ngFor="let category of availableCategories">
+        <div class="form-check form-check-inline">
+          <input  class="form-check-input" type="radio" name="category"
+                  id="inputRadio2-{{category}}" [value]="category"
+                  [(ngModel)]="productForm.category" required>
+          <label class="form-check-label" for="customRadio2">{{category}}</label>
+        </div>
+      </ng-container>
+      <div [hidden]="validationForm.controls.category?.valid" class="alert alert-danger">#ERROR : UTILISATION_is_not_valid</div>
+    </div>
+
+<!-- PRIX D'ACHAT -->
+    <div class="form-group">
+      <label>Prix d'Achat</label><br>
+      <input  [(ngModel)]="productForm.prixAchat" #achat="ngModel" name="achat"
+              type="number" min="0" required >
+      <div [hidden]="achat.valid" class="alert alert-danger">#ERROR : PRIX-ACHAT_is_not_valid</div>
+    </div>
+<!-- PRIX DE VENTE -->
+    <div class="form-group">
+      <label>Prix de Vente</label><br>
+      <input  [(ngModel)]="productForm.prixVente" #vente="ngModel" name="vente"
+              type="number" min="0">
+      <div [hidden]="vente.valid" class="alert alert-danger">#ERROR : PRIX-VENTE_is_not_valid</div>
+    </div>
+
+    <input type="submit" class="btn btn-lg btn-outline-danger" value="AJOUTER" [disabled]="!validationForm.valid"><br>
+    <button type="button" class="btn btn-lg btn-outline-danger" [routerLink]="['']">DASHBOARD</button>
+
+  </form>
+</div>
+
+
+
+
+
+
+
+
+

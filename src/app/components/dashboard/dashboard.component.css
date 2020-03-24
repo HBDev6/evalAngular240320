@@ -1,0 +1,77 @@
+
+table{
+  border: DARKRED solid 2px;
+  /* font-size: 1.5em; */
+}
+
+thead{
+  background: #000;
+  text-decoration: underline;
+}
+tbody tr{
+  opacity: 0.8;
+}
+
+tbody tr:hover{
+  opacity: 1;
+  text-decoration: underline;
+  border: 2px solid black;
+}
+
+.divA{
+  background-color: lightgrey;
+  color: DARKRED;
+}
+.divB{
+  background-color: DARKRED;
+  color: lightgrey;
+}
+.icon{
+  margin: 0px 10px;
+}
+.divA .v-separator{
+  color: DARKRED;
+}
+.divB .v-separator{
+  color: lightgrey;
+}
+
+.divA .thune{
+  background-color: white;
+  color: red;
+}
+.divB .thune{
+  background-color: red;
+  color: black;
+}
+
+.icon:hover{
+  animation: pulse 0.3s ease 0.1s infinite alternate;
+}
+
+@keyframes pulse{
+  from{
+    filter: drop-shadow(0px 0px 0px);
+  }
+  to{
+    filter: drop-shadow(0px 0px 2px);
+  }
+}
+
+.btn{
+  display: block;
+  margin: auto;
+  color: darkred;
+}
+.btn:hover{
+  background-color: darkred;
+  color: white;
+}
+
+
+
+
+
+
+
+

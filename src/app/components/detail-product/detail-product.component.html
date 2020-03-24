@@ -1,0 +1,20 @@
+<ng-container *ngIf="isLoading">
+  Loading data..
+  <img src="/assets/pics/loading.gif">
+</ng-container>
+<ng-container *ngIf="!isLoading">
+  <h1>Vous regardez les détails de l'ordinateur n°{{product.id}}</h1>
+  <ul>
+    <li><span>Référence de l'ordinateur :</span> {{product.modele}} </li>
+    <li><span>Marque :</span> {{product.marque}} </li>
+    <li><span>Catégorie :</span> {{product.category}} </li>
+    <li><span>Type d'utilisation :</span> {{product.type}} </li>
+    <li><span>Date d'Entrée en Stock :</span> {{product.dateEntreStock|date:"dd/MM/yy"}}</li>
+    <li><span>Prix d'Achat :</span> {{product.prixAchat}} €</li>
+    <li><span>Prix de Vente :</span> {{product.prixVente}} € </li>
+    <li><span>Marge :</span> {{product.prixVente - product.prixAchat|number}} €</li>
+  </ul>
+</ng-container>
+
+<button type="button" class="btn btn-lg btn-outline-danger" [routerLink]="['']">DASHBOARD</button>
+
