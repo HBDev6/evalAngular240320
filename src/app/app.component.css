@@ -1,0 +1,9 @@
+.global-border{
+  height: auto;
+  width: auto;
+  padding: 10px;
+  border: 10px solid black;
+}
+
+
+
